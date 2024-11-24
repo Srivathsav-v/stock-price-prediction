@@ -39,12 +39,15 @@ mse = mean_squared_error(y_test, y_pred)
 print(f"Mean Squared Error: {mse}")
 
 # Plot the results and save as an image
-plt.scatter(y_test, y_pred)
+plt.scatter(y_test, y_pred, color='blue', label='Predicted Prices')
+plt.scatter(y_test, y_test, color='green', label='Actual Prices')
 plt.xlabel("Actual Prices")
 plt.ylabel("Predicted Prices")
 plt.title("Actual vs. Predicted Stock Prices")
-plt.savefig('actual_vs_predicted.png')  # Save the plot as an image
-print("Plot saved as 'actual_vs_predicted.png'")
+plt.legend()  # Add legend to differentiate actual and predicted points
+plt.savefig('actual_vs_predicted_colored.png')  # Save the plot as an image
+print("Plot saved as 'actual_vs_predicted_colored.png'")
+
 
 # Save the model for future use
 import joblib
