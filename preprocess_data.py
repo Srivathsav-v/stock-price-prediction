@@ -11,6 +11,9 @@ data = pd.read_csv('rivian_stock_data.csv', skiprows=3, names=column_names)
 data.set_index('Date', inplace=True)
 data.index = pd.to_datetime(data.index)
 
+# Trim the dataset to focus only on recent data (e.g., from July 2022 onwards)
+data = data[data.index >= '2022-07-01']
+
 # Print columns for debugging
 print("Columns in the DataFrame:", data.columns)
 
@@ -32,3 +35,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # Print shapes of the datasets
 print(f"Training data size: {len(X_train)}")
 print(f"Testing data size: {len(X_test)}")
+
+# Print summary statistics of the 'Close' column
+print("Summary statistics of Close price column:")
+print(data['Close'].describe())
